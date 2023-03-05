@@ -8,24 +8,25 @@ enum class TriangleTypes{
 }
 
 class Triangle(
-    var a: Int,
-    var b: Int,
-    var c: Int
+    private var a: Int,
+    private var b: Int,
+    private var c: Int
 ) {
 
     //Get type of triangle by sides
     fun defineTriangle() : TriangleTypes{
         if (!this.checkRanges()) return TriangleTypes.IS_NOT_A_TRIANGLE
+        var result: TriangleTypes = TriangleTypes.IS_NOT_A_TRIANGLE
         if (a < b + c || b < a + c || c < a + b) {
-            return when {
-                (a == b &&  a == c && b == c) ->  TriangleTypes.IS_EQUILATERAL
-                (a == b || a == c || c == b)  ->  TriangleTypes.IS_ISOSCELES
-                (a != b || a != c || b != c ) ->  TriangleTypes.IS_SCALENE
-                else -> TriangleTypes.IS_NOT_A_TRIANGLE
+            when {
+                (a == b && a == c && b == c) -> result = TriangleTypes.IS_EQUILATERAL
+                (a == b || a == c || c == b) -> result = TriangleTypes.IS_ISOSCELES
+                (a != b || a != c || b != c) -> result = TriangleTypes.IS_SCALENE
             }
         }
-        return TriangleTypes.IS_NOT_A_TRIANGLE
+        return result
     }
+
 
     //Check ranges
     private fun checkRanges(): Boolean{

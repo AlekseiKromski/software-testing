@@ -15,7 +15,11 @@ class TriangleTest {
         //Check triangles types
         assertEquals(TriangleTypes.IS_EQUILATERAL, Triangle(100, 100, 100).defineTriangle())
         assertEquals(TriangleTypes.IS_SCALENE, Triangle(101, 104, 103).defineTriangle())
+        assertEquals(TriangleTypes.IS_SCALENE, Triangle(103, 102, 104).defineTriangle())
+        assertEquals(TriangleTypes.IS_SCALENE, Triangle(102, 103, 104).defineTriangle())
         assertEquals(TriangleTypes.IS_ISOSCELES, Triangle(100, 100, 102).defineTriangle())
+        assertEquals(TriangleTypes.IS_ISOSCELES, Triangle(102, 100, 100).defineTriangle())
+        assertEquals(TriangleTypes.IS_ISOSCELES, Triangle(100, 102, 100).defineTriangle())
 
         //Check is not a triangle
         assertEquals(TriangleTypes.IS_NOT_A_TRIANGLE, Triangle(104, 101, -1).defineTriangle())
